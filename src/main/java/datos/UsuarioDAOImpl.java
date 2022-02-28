@@ -81,27 +81,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return flag;
     }
     
-    //this is to get the password from database
-    public void findUserPassword(String email) throws SQLException {
+    
+    public boolean findUserPassword(String email) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Connection conn = null;
         PreparedStatement pst = null;
+        boolean mailExist = false;
         
         String SQL = "SELECT password FROM campus where email = '" + email + "'";
         try {
+            //Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = Conexion.getConnection();
             pst = conn.prepareStatement(SQL);
             ResultSet rs = pst.executeQuery();
             Usuario user = new Usuario();
-            while(rs.next()){
-                
+            while(rs.next()){                
                 user.setPassword(rs.getString("password"));
             }           
                         
             if(user.getPassword() == null) {
-                System.out.println("Your mail doesn't exists");
+                System.out.println("Your mail doesn't exists");                
             } else {
                 RecoveryPassword.resetPassword(email, user.getPassword());
                 System.out.println("Messege send");
+                mailExist = true;
             }
             
         } catch (SQLException ex) {
@@ -114,6 +116,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 ex.printStackTrace();
             }
         }
-        
+        return mailExist;
     }
 }

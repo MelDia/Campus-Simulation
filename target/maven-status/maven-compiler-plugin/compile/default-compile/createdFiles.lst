@@ -1,7 +1,9 @@
+servlet_control\ResetPasswordServlet.class
 datos\UsuarioDAO.class
 datos\UsuarioDAOImpl.class
 domain\Usuario.class
 datos\Conexion.class
+password\RecoveryPassword.class
 servlet_control\loginServlet.class
 servlet_control\RegistServlet.class
 test\test.class

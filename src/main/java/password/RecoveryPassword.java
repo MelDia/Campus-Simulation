@@ -21,6 +21,12 @@ public class RecoveryPassword {
         propiedad.setProperty("mail.smtp.starttls.enable", "true");
         propiedad.setProperty("mail.smtp.port", "587");
         propiedad.setProperty("mail-smtp.auth", "true");
+        propiedad.put("mail.smtp.socketFactory.port", "587");
+        propiedad.put("javax.net.ssl.SSLSocketFactory", "javax.net.ssl.SSLsocketFactory");
+        propiedad.put("mail.smtp.ssl.socketFactory", "true");
+        propiedad.put("mail.smtp.EnableSSL.enable","true");
+        propiedad.put("mail.smtp.ssl.trust", "*");
+        propiedad.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
         Session sesion = Session.getDefaultInstance(propiedad);        
         
@@ -28,7 +34,7 @@ public class RecoveryPassword {
         String contrasena = "chichina97";
         String receptor = email;
         String asunto = "Recovery password - Campus simulation";
-        String mensaje = "Your password is:" + password;
+        String mensaje = "This is your password: " + password;
 
         MimeMessage mail = new MimeMessage(sesion);
         try {
