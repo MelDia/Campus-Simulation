@@ -5,6 +5,8 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="https://kit.fontawesome.com/9bc29573df.js" crossorigin="anonymous"></script>
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,7 +22,7 @@
             #login {
                 margin-top: 105px;
                 max-width: 410px;
-                height: 460px;
+                height: 500px;
                 border: 2px solid #0d6efd;
                 border-radius: 20px;
                 background-color: white;
@@ -32,6 +34,10 @@
 
             h3 {
                 font-weight: bold;
+                color: #0d6efd
+            }
+            
+            p {
                 color: #0d6efd
             }
 
@@ -46,7 +52,7 @@
                         <h3>Login</h3>
                         <p class="text-black-50 mb-3">Please enter your login and password!</p>
                     </div>
-
+                    
                     <form action="${pageContext.request.contextPath}/loginServlet" method="POST">
                         <!-- Username input -->
                         <div class="form-outline mb-4">
@@ -86,17 +92,13 @@
                         <div class="text-center">
                             <p>Not a member? <a href="register.jsp">Register</a></p>
                         </div>
+                        
+                        <p> <a href="index.jsp"> <i class="far fa-arrow-alt-circle-left"></i> Back to index </a> </p>
 
                     </form>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

@@ -42,59 +42,59 @@
                     <h3>User register</h3>
                 </div>
 
-                <form action="${pageContext.request.contextPath}/registServlet" method="POST">
+                <form action="${pageContext.request.contextPath}/registServlet" method="POST" class="was-validated" >
                     <div class="row mb-4">
                         <div class="col">
                             <div class="form-outline">
-                                <input type="text" name = "name" class="form-control" />
+                                <input type="text" name = "name" class="form-control" required/>
                                 <label class="form-label" for="form3Example1">First name</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-outline">
-                                <input type="text" name = "lastname" class="form-control" />
+                                <input type="text" name = "lastname" class="form-control" required/>
                                 <label class="form-label" for="form3Example2">Last name</label>
                             </div>
                         </div>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="email" name = "email" class="form-control" />
+                        <input type="email" name = "email" class="form-control" required/>
                         <label class="form-label" for="form3Example3">Email address</label>
                     </div>
 
                     <!-- Username input -->
                     <div class="form-outline mb-4">
-                        <input type="text" name = "username" class="form-control" />
+                        <input type="text" name = "username" class="form-control" required/>
                         <label class="form-label" for="form3Example4">Username</label>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                        <input type="password" name = "password" class="form-control" />
+                        <input type="password" name = "password" class="form-control" required/>
                         <label class="form-label" for="form3Example4">Password</label>
                     </div>    
 
                     <!-- Submit button -->
                     <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                        <button type = "submit" value = "Registro" onclick = "alert('Successful registration')" class="btn btn-primary btn-block">
+                        <button type = "submit" value = "Registro" class="btn btn-primary btn-block">
                             Sign up
                         </button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
                 integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
                 integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
+        
+
     </body>
 </html>

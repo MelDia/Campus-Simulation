@@ -29,38 +29,45 @@
                 border-radius: 20px;
                 background-color: white;
             }
-            
-            
+
+            form {
+                background-color: white;
+            }
+
+            h3 {
+                font-weight: bold;
+                color: #0d6efd
+            }
+
+
         </style>
     </head>
     <body>
         <div id="pass" class="container d-flex align-items-center justify-content-center">
             <div id="login-row" class="row justify-content-center">
-
-
-                <div class="title text-center mb-3">
-                    ResetPassword                            
-                </div>
-
                 <div>
-                    <form action="${pageContext.request.contextPath}/resetPassword" method="POST">
-                        <div class="form-group row">
-                            <label for="email_address" class="col-md-4 col-form-label text-md-right">
-                                Enter Email of registration
-                            </label>
-                            <div class="col-md-6">
-                                <input type="text" id="email"  class="form-control" placeholder="Enter Login Id"
-                                       name="email" />
-                                <font  color="red"></font>
+
+                    <div class="title text-center mb-3">
+                        <h3> Reset password </h3> 
+                        <p class="text-black-50 mb-3">Please enter your email of registracion!</p>
+                    </div>
+
+                    <div>
+                        <form action="${pageContext.request.contextPath}/resetPassword" method="POST">
+                            <div class="form-outline mb-4">
+                                <input type="email" name = "email" class="form-control" placeholder="Enter email"/>
+                                <label class="form-label" for="email_address"></label>
                             </div>
-                        </div>
-                        <div class="col-md-6 offset-md-4">
-                            <input type="submit" class="btn btn-primary" value="Get your password"/>
-
-                        </div>
-                    </form>
+                            
+                            
+                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                <button type = "submit" value = "Get your password" class="btn btn-primary btn-block">
+                                    Get your password!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
 
             </div>
         </div>

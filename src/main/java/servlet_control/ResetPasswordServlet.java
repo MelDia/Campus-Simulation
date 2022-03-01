@@ -1,7 +1,6 @@
 package servlet_control;
 
 import datos.UsuarioDAOImpl;
-import domain.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import password.RecoveryPassword;
 
 @WebServlet("/resetPassword")
 public class ResetPasswordServlet extends HttpServlet {
@@ -28,12 +26,10 @@ public class ResetPasswordServlet extends HttpServlet {
             boolean exist = daoImpl.findUserPassword(recipient);
             if(exist){
                 mensaje = "We found your password. Please check your e-mail.";  
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("message2.jsp");
             }else{
-                mensaje = "Your mail doesn't exists... try again";
-                //request.setAttribute("message", mensaje);
-            //request.getRequestDispatcher("index.jsp").forward(request, response);
-            response.sendRedirect("index.jsp");
+                mensaje = "Your mail doesn't exists... try again";                         
+            response.sendRedirect("message.jsp");
             }            
         } catch (SQLException ex) {
             Logger.getLogger(ResetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);

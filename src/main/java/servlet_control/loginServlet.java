@@ -33,7 +33,6 @@ public class loginServlet extends HttpServlet {
         } else {
             response.sendRedirect("loginFailed.jsp");
         }
-
     }
 
     @Override

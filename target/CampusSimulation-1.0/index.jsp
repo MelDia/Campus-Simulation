@@ -49,7 +49,6 @@
                 <div class="d-grid gap-2 d-md-block col-6 mx-auto mb-3">
                     <a class="btn btn-primary" href="login.jsp" role="button">Login</a>
                     <a class="btn btn-primary" href="register.jsp" role="button">Registration</a>
-
                 </div>
             </div>
         </div>

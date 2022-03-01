@@ -11,8 +11,7 @@ import password.RecoveryPassword;
 public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
-    public boolean save(Usuario usuario) {
-        boolean flag = false;
+    public void save(Usuario usuario) {       
         Connection conn = null;
         PreparedStatement pst = null;
         String SQL = "INSERT INTO campus(username, password, email, name, lastname) VALUE (?, ?, ?, ?, ?)";
@@ -24,10 +23,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             pst.setString(3, usuario.getEmail());
             pst.setString(4, usuario.getName());
             pst.setString(5, usuario.getLastname());
-            int row = pst.executeUpdate();
-            if (row > 0) {
-                flag = true;
-            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
@@ -36,9 +31,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 Conexion.close(conn);
             } catch (SQLException ex) {
             }
-
-        }
-        return flag;
+        }      
     }
 
     @Override
@@ -62,8 +55,42 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     if (user.getPassword().equals(password)){
                         flag = true;
                         break;
-                    }
-                    
+                    }                    
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                Conexion.close(rs);
+                Conexion.close(pst);
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return flag;
+    }
+    
+    @Override
+    public boolean userExist(String username) {
+        boolean flag = false;
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String SQL = "SELECT username FROM campus";
+        try {
+            conn = Conexion.getConnection();
+            pst = conn.prepareStatement(SQL);
+            rs = pst.executeQuery();
+            
+            Usuario user = new Usuario();
+            
+            while (rs.next()){
+                user.setUsername(rs.getString("username"));
+                if(user.getUsername().equals(username)){                    
+                        flag = true;
+                        break;                      
                 }
             }
         } catch (SQLException ex) {
@@ -85,19 +112,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public boolean findUserPassword(String email) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Connection conn = null;
         PreparedStatement pst = null;
-        boolean mailExist = false;
-        
+        boolean mailExist = false;        
         String SQL = "SELECT password FROM campus where email = '" + email + "'";
-        try {
-            //Class.forName("com.mysql.jdbc.Driver").newInstance();
+        try {            
             conn = Conexion.getConnection();
             pst = conn.prepareStatement(SQL);
             ResultSet rs = pst.executeQuery();
             Usuario user = new Usuario();
             while(rs.next()){                
                 user.setPassword(rs.getString("password"));
-            }           
-                        
+            }       
+                       
             if(user.getPassword() == null) {
                 System.out.println("Your mail doesn't exists");                
             } else {

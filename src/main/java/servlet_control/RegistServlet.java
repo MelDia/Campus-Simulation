@@ -30,13 +30,15 @@ public class RegistServlet extends HttpServlet{
        user.setPassword(password);
        user.setEmail(email);
        user.setName(name);
-       user.setLastname(lastname);
+       user.setLastname(lastname);       
        
-       boolean flag = userdao.save(user);
-       if( flag ) {
-           response.sendRedirect("login.jsp");
-       } else {
-           response.sendRedirect("register.jsp");
+       
+       boolean flagUserExist = userdao.userExist(user.getUsername());         
+       if( !flagUserExist) { 
+           userdao.save(user);
+           response.sendRedirect("registerSucceed.jsp");
+       } else {//           
+           response.sendRedirect("registerFailed.jsp");
        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
